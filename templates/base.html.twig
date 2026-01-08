@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Analyse Réseau{% endblock %}</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/lux/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-dark: radial-gradient(circle at top left, #020617 0, #020617 45%, #000000 100%);
+            --bg-light: radial-gradient(circle at top left, #dbeafe 0, #eff6ff 50%, #ffffff 100%);
+            --text-light: #f9fafb;
+            --text-dark: #0f172a;
+        }
+
+        body.fond.theme-dark {
+            background: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        body.fond.theme-light {
+            background: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        /* ---------- BARRE SUPÉRIEURE GLASS ---------- */
+        .navbar-shell {
+            padding-top: 0.9rem;
+            padding-bottom: 0.9rem;
+        }
+
+        .navbar-glass {
+            background: radial-gradient(circle at top left, rgba(15,23,42,0.96), rgba(15,23,42,0.88));
+            border-radius: 18px;
+            border: 1px solid rgba(148,163,184,0.45);
+            box-shadow:
+                0 18px 40px rgba(15,23,42,0.95),
+                0 0 0 1px rgba(15,23,42,0.8) inset;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            padding: 0.65rem 1.25rem;
+        }
+
+        body.theme-light .navbar-glass {
+            background: radial-gradient(circle at top left, rgba(255,255,255,0.96), rgba(241,245,249,0.96));
+            border-color: rgba(148,163,184,0.35);
+            box-shadow:
+                0 16px 32px rgba(15,23,42,0.18),
+                0 0 0 1px rgba(209,213,219,0.6) inset;
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            color: #e5e7eb !important;
+            text-shadow:
+                0 0 14px rgba(56,189,248,0.7),
+                0 0 26px rgba(59,130,246,0.5);
+        }
+
+        body.theme-light .navbar-brand {
+            color: #0f172a !important;
+            text-shadow:
+                0 0 10px rgba(191,219,254,0.9),
+                0 0 18px rgba(59,130,246,0.4);
+        }
+
+        .navbar-tagline {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #9ca3af;
+        }
+
+        /* ---------- BOUTONS MENU FLOTTANTS ---------- */
+        .nav-link-btn {
+            border-radius: 999px;
+            padding: 0.45rem 1.25rem;
+            margin-left: 0.45rem;
+            font-weight: 600;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            position: relative;
+            transform: translateY(0);
+            border: 1px solid rgba(148,163,184,0.65);
+            color: #e5e7eb !important;
+            background: radial-gradient(circle at top left, rgba(30,64,175,0.24), rgba(15,23,42,0.98));
+            box-shadow:
+                0 10px 24px rgba(15,23,42,0.9),
+                0 0 0 1px rgba(15,23,42,0.95) inset;
+            transition:
+                transform 0.22s ease-out,
+                box-shadow 0.22s ease-out,
+                border-color 0.22s ease-out,
+                background 0.22s ease-out,
+                color 0.22s ease-out;
+            overflow: hidden;
+        }
+
+        body.theme-light .nav-link-btn {
+            color: #0f172a !important;
+            background: radial-gradient(circle at top left, rgba(219,234,254,0.95), rgba(239,246,255,1));
+            box-shadow:
+                0 10px 22px rgba(15,23,42,0.18),
+                0 0 0 1px rgba(148,163,184,0.8) inset;
+        }
+
+        .nav-link-btn::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(255,255,255,0.18), transparent 45%, transparent 55%, rgba(56,189,248,0.25));
+            transform: translateX(-140%);
+            opacity: 0.9;
+            transition: transform 0.6s ease-out;
+        }
+
+        .nav-link-btn:hover::before {
+            transform: translateX(140%);
+        }
+
+        .nav-link-btn:hover,
+        .nav-link-btn.active {
+            transform: translateY(-3px);
+            border-color: rgba(56,189,248,0.95);
+            box-shadow:
+                0 18px 40px rgba(15,23,42,0.98),
+                0 0 22px rgba(56,189,248,0.6);
+            background: radial-gradient(circle at top left, rgba(56,189,248,0.2), rgba(15,23,42,0.98));
+            color: #e5f6ff !important;
+            text-decoration: none;
+        }
+
+        body.theme-light .nav-link-btn:hover,
+        body.theme-light .nav-link-btn.active {
+            background: radial-gradient(circle at top left, rgba(239,246,255,1), rgba(191,219,254,1));
+            border-color: rgba(59,130,246,0.95);
+            box-shadow:
+                0 18px 36px rgba(15,23,42,0.28),
+                0 0 20px rgba(59,130,246,0.45);
+        }
+
+        .nav-link-btn:active {
+            transform: translateY(0);
+            box-shadow:
+                0 10px 20px rgba(15,23,42,0.9),
+                0 0 18px rgba(56,189,248,0.4);
+        }
+
+        /* ---------- Toggle de thème ---------- */
+        .theme-toggle {
+            position: relative;
+            width: 64px;
+            height: 32px;
+            border-radius: 999px;
+            border: 1px solid rgba(148,163,184,0.8);
+            background: radial-gradient(circle at 20% 20%, #38bdf8, #020617);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 3px;
+            margin-left: 0.85rem;
+            box-shadow:
+                0 10px 24px rgba(15,23,42,0.9),
+                0 0 0 1px rgba(15,23,42,0.9) inset;
+            transition:
+                background 0.22s ease-out,
+                border-color 0.22s ease-out,
+                box-shadow 0.22s ease-out;
+        }
+
+        .theme-toggle-knob {
+            width: 24px;
+            height: 24px;
+            border-radius: 999px;
+            background: #e5e7eb;
+            box-shadow:
+                0 4px 10px rgba(15,23,42,0.85),
+                0 0 0 1px rgba(148,163,184,0.9);
+            transform: translateX(0);
+            transition: transform 0.22s ease-out, background 0.22s ease-out;
+        }
+
+        body.theme-light .theme-toggle {
+            background: radial-gradient(circle at 80% 20%, #facc15, #38bdf8);
+            border-color: rgba(59,130,246,0.95);
+            box-shadow:
+                0 12px 26px rgba(15,23,42,0.32),
+                0 0 0 1px rgba(191,219,254,0.9) inset;
+        }
+
+        body.theme-light .theme-toggle-knob {
+            transform: translateX(30px);
+            background: #f9fafb;
+            box-shadow:
+                0 4px 8px rgba(15,23,42,0.35),
+                0 0 0 1px rgba(148,163,184,0.75);
+        }
+
+        .theme-toggle-icon {
+            position: absolute;
+            top: 50%;
+            font-size: 0.7rem;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: #e5e7eb;
+            opacity: 0.8;
+        }
+
+        .theme-toggle-icon-left { left: 8px; }
+        .theme-toggle-icon-right { right: 8px; }
+
+        body.theme-light .theme-toggle-icon-left { opacity: 0.25; }
+        body.theme-light .theme-toggle-icon-right { opacity: 1; }
+
+        /* ---------- Texte global ---------- */
+        body.theme-dark {
+            color: var(--text-light);
+        }
+
+        body.theme-light {
+            color: var(--text-dark);
+        }
+    </style>
+
+    {% block page_styles %}{% endblock %}
+</head>
+<body class="fond theme-dark">
+<nav class="navbar-shell">
+    <div class="container">
+        <div class="navbar navbar-expand-lg navbar-dark navbar-glass">
+            <a class="navbar-brand d-flex flex-column me-3" href="{{ path('accueil') }}">
+                <span>SAÉ 1.05</span>
+                <span class="navbar-tagline">Analyse réseau & sécurité</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar" aria-expanded="false" aria-label="Basculer la navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <div class="ms-auto d-flex align-items-center">
+                    <a class="nav-link nav-link-btn{% if app.request.attributes.get('_route') == 'accueil' %} active{% endif %}"
+                       href="{{ path('accueil') }}">
+                        Analyseur
+                    </a>
+                    <a class="nav-link nav-link-btn{% if app.request.attributes.get('_route') == 'mon_e_portfolio' %} active{% endif %}"
+                       href="{{ path('mon_portfolio') }}">
+                        Mon portfolio
+                    </a>
+
+                    <div id="themeToggle" class="theme-toggle" title="Changer le thème">
+                        <span class="theme-toggle-icon theme-toggle-icon-left">🌙</span>
+                        <span class="theme-toggle-icon theme-toggle-icon-right">☀️</span>
+                        <div class="theme-toggle-knob"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ type }} mt-2 mb-0 shadow-sm">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>
+
+<div class="wrapper d-flex flex-column min-vh-100">
+    <div class="content container flex-grow-1 my-5">
+        {% block body %}{% endblock %}
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    (function () {
+        const body = document.body;
+        const toggle = document.getElementById('themeToggle');
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            body.classList.remove('theme-dark');
+            body.classList.add('theme-light');
+        }
+
+        if (toggle) {
+            toggle.addEventListener('click', function () {
+                if (body.classList.contains('theme-dark')) {
+                    body.classList.remove('theme-dark');
+                    body.classList.add('theme-light');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    body.classList.remove('theme-light');
+                    body.classList.add('theme-dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+        }
+    })();
+</script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Portfolio SAÉ 1.05 - Liste des Acquis de Compétences.
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid py-4 cyber-theme">
+    <header class="dashboard-header glass-card mb-4 glass-elevated">
+        <div>
+            <h1 class="m-0 fw-bold text-white">
+                PORTFOLIO <span class="text-info">SAÉ 1.05</span>
+            </h1>
+            <small class="text-muted">Analyse et extraction de données – BUT Réseaux & Télécoms</small>
+        </div>
+
+        <div class="d-flex flex-column align-items-end gap-2">
+            <span class="badge badge-time">
+                {{ "now"|date("d/m/Y H:i") }}
+            </span>
+        </div>
+    </header>
+
+    <main class="row g-4">
+        <section class="col-lg-8">
+            <div class="glass-card glass-elevated p-4 h-100">
+                <div class="text-center mb-4">
+                    <h2 class="section-title mb-2">Acquis de compétences</h2>
+                    <p class="section-subtitle">
+                        Validation progressive des AC autour du développement web, de l’analyse de trames et de l’automatisation.
+                    </p>
+                </div>
+
+                <div class="ac-list">
+                    {# AC 0311 #}
+                    <article class="ac-card">
+                        <div class="ac-card-header">
+                            <h5 class="ac-title">AC0311 · Utiliser un système informatique et ses outils</h5>
+                            <span class="ac-badge ac-badge-env">Environnement</span>
+                        </div>
+                        <p class="ac-text">
+                            Utilisation régulière du terminal (CLI) pour piloter le projet Symfony : lancement du serveur, exécution des scripts Python et gestion des dépendances via Composer. Cette pratique a permis de travailler de manière plus autonome, en s’appuyant sur les outils systèmes plutôt que sur des interfaces graphiques..
+                        </p>
+                    </article>
+
+                    {# AC 0312 #}
+                    <article class="ac-card">
+                        <div class="ac-card-header">
+                            <h5 class="ac-title">AC0312 · Lire, exécuter, corriger et modifier un programme</h5>
+                            <span class="ac-badge ac-badge-code">Programmation</span>
+                        </div>
+                        <p class="ac-text">
+                            MMaintenance du script <code>txt_csv.py</code> en ajustant les expressions régulières afin de capturer correctement les adresses IP, les ports et les flags TCP présents dans DumpFile.txt. Les tests successifs ont permis d’identifier les lignes problématiques et d’affiner progressivement le traitement pour obtenir un fichier CSV exploitable.
+                        </p>
+                    </article>
+
+                    {# AC 0313 #}
+                    <article class="ac-card">
+                        <div class="ac-card-header">
+                            <h5 class="ac-title">
+                                AC0313 · Traduire un algorithme dans un langage et un environnement donnés
+                            </h5>
+                            <span class="ac-badge ac-badge-algo">Algorithmique</span>
+                        </div>
+                        <p class="ac-text">
+                            Mise en place de l’algorithme d’analyse dans <code>Markdown-csv_to_md.py</code> pour parcourir plus de 11 000 lignes issues du trafic réseau. Le script organise les données, repère les volumes anormaux et met en évidence des comportements typiques d’attaques (DoS, scans de ports) afin de produire un rapport lisible.
+                        </p>
+                    </article>
+
+                    {# AC 0314 #}
+                    <article class="ac-card">
+                        <div class="ac-card-header">
+                            <h5 class="ac-title">
+                                AC0314 · Connaître l’architecture et les technologies d’un site web
+                            </h5>
+                            <span class="ac-badge ac-badge-web">Web</span>
+                        </div>
+                        <p class="ac-text">
+                            Construction d’une architecture de type <strong>MVC</strong> avec le  framework <strong>Symfony</strong> pour séparer clairement les rôles : scripts d’analyse côté Python, contrôleurs pour orchestrer la logique, et vues Twig pour l’affichage. Le routage et le système de templates permettent de présenter les résultats d’analyse dans une interface structurée et cohérente.
+                        </p>
+                    </article>
+
+                    {# AC 0315 #}
+                    <article class="ac-card">
+                        <div class="ac-card-header">
+                            <h5 class="ac-title">
+                                AC0315 · Choisir les mécanismes de gestion de données adaptés
+                            </h5>
+                            <span class="ac-badge ac-badge-data">Données</span>
+                        </div>
+                        <p class="ac-text">
+                            Choix d’un format <strong>CSV</strong> comme point de passage entre les scripts Python et l’application web, afin de garder un stockage léger, lisible et facilement manipulable. Cette approche évite la complexité d’une base SQL tout en restant suffisamment performante pour traiter un volume important de lignes issues du trafic réseau.
+                        </p>
+                    </article>
+
+                    {# AC 0316 #}
+                    <article class="ac-card">
+                        <div class="ac-card-header">
+                            <h5 class="ac-title">
+                                AC0316 · S’intégrer dans un environnement de travail collaboratif
+                            </h5>
+                            <span class="ac-badge ac-badge-method">Méthodologie</span>
+                        </div>
+                        <p class="ac-text">
+                            Utilisation organisée de <strong>Git et GitHub</strong> pour versionner le code, partager les modifications et garder un historique clair des évolutions du projet. Cette gestion a facilité la collaboration, la résolution de conflits et la sécurisation du travail réalisé tout au long de la SAÉ.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        {# Colonne droite : carte synthèse / réflexion #}
+        <section class="col-lg-4">
+            <div class="glass-card glass-elevated p-4 h-100">
+                <h3 class="section-title mb-3">Analyse réflexive</h3>
+                <p class="small text-muted mb-3">
+                    Retour structuré sur la façon dont le projet a fait évoluer tes compétences.
+                </p>
+
+                <div class="reflex-steps">
+                    <article class="reflex-step">
+                        <h5 class="reflex-title">1. Avant l’action</h5>
+                        <p class="reflex-text">
+Avant de démarrer le projet, l’objectif était de construire un lien clair entre l’analyse de traces réseau brutes et une interface web compréhensible pour un utilisateur non spécialiste. Cela a demandé de réfléchir à l’architecture globale : quels scripts Python pour traiter les paquets, quel format d’échange de données, et comment organiser l’affichage dans Symfony. Le choix d’un format pivot comme le CSV s’est imposé pour garder un flux simple, réutilisable et facile à inspecter, tout en restant compatible avec l’environnement de développement existant.
+                        </p>
+                    </article>
+
+                    <article class="reflex-step">
+                        <h5 class="reflex-title">2. Pendant l’action</h5>
+                        <p class="reflex-text">
+                            Pendant la réalisation, plusieurs difficultés concrètes sont apparues : gestion des chemins de fichiers entre Python et Symfony, réglage précis des expressions régulières pour extraire les bonnes informations, et résolution de conflits Git lors du travail collaboratif. Chaque blocage a été l’occasion de renforcer la maîtrise des outils : recherche d’erreurs dans les logs, tests unitaires sur des petits échantillons de données, et utilisation plus rigoureuse des branches Git. Progressivement, la satisfaction de voir le tableau d’analyse se mettre à jour automatiquement a pris le dessus sur la frustration des premières erreurs.
+                        </p>
+                    </article>
+
+                    <article class="reflex-step">
+                        <h5 class="reflex-title">3. Après l’action</h5>
+                        <p class="reflex-text">
+                            Après coup, le projet montre une vraie progression sur plusieurs compétences : capacité à adapter et corriger un programme existant, à choisir des mécanismes de stockage adaptés, et à travailler dans un environnement collaboratif structuré. Le bilan met aussi en lumière des pistes d’amélioration : rendre le code plus modulaire, mieux séparer la logique métier et la présentation, et documenter davantage les scripts. Pour la suite, l’évolution naturelle serait d’aller vers une automatisation plus poussée de la collecte de paquets (API, capture en continu) et vers une interface encore plus interactive pour filtrer et explorer les résultats d’analyse..
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+{% endblock %}
+
+{% block page_styles %}
+<style>
+    .cyber-theme {
+        min-height: 100vh;
+        position: relative;
+    }
+
+    .dashboard-header {
+        padding: 1.5rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    @media (max-width: 767.98px) {
+        .dashboard-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .dashboard-header > div:last-child {
+            align-items: flex-start !important;
+        }
+    }
+
+    .badge-time {
+        background: rgba(74, 114, 154, 0.96);
+        color: #e5e7eb;
+        border-radius: 999px;
+        padding: 0.3rem 0.9rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        border: 1px solid rgba(148, 163, 184, 0.7);
+        box-shadow:
+            0 0 12px rgba(34, 226, 226, 0.9),
+            0 0 16px rgba(56, 86, 151, 0.45);
+    }
+
+    .glass-card {
+        background: linear-gradient(135deg, rgba(17, 24, 39, 0.9), rgba(15, 23, 42, 0.88));
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        border-radius: 18px;
+        box-shadow:
+            0 18px 45px rgba(0, 0, 0, 0.7),
+            0 0 0 1px rgba(15, 23, 42, 0.8) inset;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .glass-elevated::before {
+        content: "";
+        position: absolute;
+        inset: -40%;
+        background: radial-gradient(circle at 0% 0%, rgba(56,189,248,0.12), transparent 60%);
+        opacity: 0.4;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    .glass-elevated {
+        transform: translateY(0);
+        transition:
+            transform 0.25s ease-out,
+            box-shadow 0.25s ease-out,
+            border-color 0.25s ease-out;
+    }
+
+    .glass-elevated:hover {
+        transform: translateY(-4px);
+        box-shadow:
+            0 24px 55px rgba(0,0,0,0.9),
+            0 0 22px rgba(56,189,248,0.35);
+        border-color: rgba(56,189,248,0.65);
+    }
+
+    .section-title {
+        color: #e5e7eb;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+    }
+
+    .section-subtitle {
+        color: #9ca3af;
+        font-size: 0.85rem;
+    }
+
+    .text-info {
+        color: #8efefe !important;
+    }
+
+    /* Cartes AC */
+    .ac-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .ac-card {
+        background: rgba(15, 23, 42, 0.95);
+        border-radius: 14px;
+        padding: 1.1rem 1.2rem;
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.8);
+        transition:
+            transform 0.2s ease-out,
+            box-shadow 0.2s ease-out,
+            border-color 0.2s ease-out,
+            background 0.2s ease-out;
+    }
+
+    .ac-card:hover {
+        transform: translateY(-3px);
+        box-shadow:
+            0 18px 40px rgba(0, 0, 0, 0.95),
+            0 0 16px rgba(56, 189, 248, 0.4);
+        border-color: rgba(56, 189, 248, 0.7);
+        background: radial-gradient(circle at top left, rgba(56,189,248,0.14), rgba(15,23,42,0.98));
+    }
+
+    .ac-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .ac-title {
+        font-size: 0.9rem;
+        color: #e5e7eb;
+        margin: 0;
+    }
+
+    .ac-badge {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        border-radius: 999px;
+        padding: 0.15rem 0.7rem;
+        border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+
+    .ac-badge-env { background: rgba(56,189,248,0.15); color: #7dd3fc; }
+    .ac-badge-code { background: rgba(52,211,153,0.15); color: #6ee7b7; }
+    .ac-badge-algo { background: rgba(251,191,36,0.15); color: #facc15; }
+    .ac-badge-web { background: rgba(129,140,248,0.15); color: #a5b4fc; }
+    .ac-badge-data { background: rgba(248,113,113,0.15); color: #fecaca; }
+    .ac-badge-method { background: rgba(244,114,182,0.15); color: #f9a8d4; }
+
+    .ac-text {
+        font-size: 0.8rem;
+        color: #9ca3af;
+        margin: 0;
+    }
+
+    /* Carte réflexion droite */
+    .reflex-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .reflex-step {
+        background: rgba(15, 23, 42, 0.97);
+        border-radius: 12px;
+        padding: 0.9rem 1rem;
+        border: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .reflex-title {
+        font-size: 0.85rem;
+        color: #e5e7eb;
+        margin-bottom: 0.35rem;
+    }
+
+    .reflex-text {
+        font-size: 0.8rem;
+        color: #9ca3af;
+        margin: 0;
+    }
+</style>
+{% endblock %}
